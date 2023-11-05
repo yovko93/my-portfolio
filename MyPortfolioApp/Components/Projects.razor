@@ -1,4 +1,6 @@
-﻿<section id="projects">
+﻿@inject IJSRuntime JSRuntime
+
+<section id="projects">
     <div class="section-padding">
         <div class="container">
             <div>
@@ -27,34 +29,6 @@
                                 <img src="./images/skills/css3.svg" />
                             </div>
                         </div>
-                        <div class="single-project-item">
-                            <img src="./images/projects/myPortfolio.png" />
-                            <br>
-                            <p>
-                                PotrtFolio Website is a overall journey and a brief overview of my career.
-                            </p>
-                            <br>
-                            <h3>Portfolio <span>Techonlogies used :</span></h3>
-                            <div class="tech-stack">
-                                <img src="./images/skills/blazor.svg" />
-                                <img src="./images/skills/html.png" />
-                                <img src="./images/skills/css3.svg" />
-                            </div>
-                        </div>
-                        <div class="single-project-item">
-                            <img src="./images/projects/myPortfolio.png" />
-                            <br>
-                            <p>
-                                PotrtFolio Website is a overall journey and a brief overview of my career.
-                            </p>
-                            <br>
-                            <h3>Portfolio <span>Techonlogies used :</span></h3>
-                            <div class="tech-stack">
-                                <img src="./images/skills/blazor.svg" />
-                                <img src="./images/skills/html.png" />
-                                <img src="./images/skills/css3.svg" />
-                            </div>
-                        </div>
 
                     </div>
                 </div>
@@ -65,5 +39,18 @@
 </section>
 
 @code {
+    [Parameter, EditorRequired]
+    public required ProjectService ProjectService { get; set; }
 
+    private List<Project> projects;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            projects = await ProjectService.GetProjectsAsync();
+            int numberOfProjects = projects.Count;
+            await JSRuntime.InvokeVoidAsync("initializeOwlCarousel", numberOfProjects);
+        }
+    }
 }
