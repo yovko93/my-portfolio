@@ -1,0 +1,46 @@
+﻿<section class="about" id="about">
+    <div class="page-background-class">
+        <div class="about-content container">
+            <div class="about-text">
+                <p class="small">About Myself</p>
+                <h2><span id="typed-element"></span></h2>
+                @if (aboutMe is null)
+                {
+                    <p><em>Loading...</em></p>
+                }
+                else
+                {
+                    <p>
+                        @aboutMe.Description
+                    </p>
+                }
+                <hr />
+                <a href="#projects" class="btn btn-primary" id="projects-btn">PROJECTS</a>
+                <a href="./files/Resume.pdf" target="_blank" class="btn btn-primary">RESUME</a>
+
+            </div>
+            <div class="about-img">
+                <img src="./images/yovko-pic.jpg" alt="Image of me">
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+@code {
+    [Parameter, EditorRequired]
+    public required HttpClient Http { get; set; }
+
+    //[Parameter, EditorRequired]
+    //public required ImageService ImageService { get; set; }
+
+    private AboutMe? aboutMe;
+    //private Image? image;
+
+    protected override async Task OnInitializedAsync()
+    {
+        aboutMe = await Http.GetFromJsonAsync<AboutMe>("sample-data/aboutme.json");
+        //image = await ImageService.GetHeroAsync(img => img.Name is "my-pic");
+    }
+}
