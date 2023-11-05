@@ -4,6 +4,11 @@
     font-size: 62.5%;
 }
 
+/*div#main {
+    display: flex;
+    flex-direction: column;
+}*/
+
 body {
     font-family: 'Montserrat', sans-serif;
 }
@@ -503,7 +508,7 @@ body {
         }
 
 /* ################ Footer ############### */
-.footer {
+/*.footer {
     background: rgb(65, 65, 65);
     padding: 2rem;
     text-align: center;
@@ -517,7 +522,26 @@ body {
 .social-links i {
     cursor: pointer;
     margin: 2rem;
+}*/
+
+img.social-icon {
+    width: 30px;
+    height: 30px;
+    margin: 10px;
 }
+
+p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 0;
+    font-weight: 300;
+}
+
+    p.small {
+        font-size: 15px;
+        text-align: center;
+        margin: 5px auto;
+    }
 
 /* ################ Media Queries ################### */
 
@@ -637,26 +661,6 @@ body {
     .navbar input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
         transform: rotate(-45deg);
     }
-
-    /* ################# Category ############## */
-
-    .category-container {
-        /* flex-direction: column; */
-        flex-wrap: wrap;
-        align-items: stretch;
-    }
-
-        .category-container .category-box:not(:last-child) {
-            margin-bottom: 3rem;
-        }
-
-        .category-container .category-box {
-            box-shadow: 5px 5px 10px 0 #aaa;
-        }
-
-        .category-container .img-container {
-            margin: 0px;
-        }
 }
 
 /* #################### screen Size 500 and below ####################  */
@@ -716,5 +720,68 @@ body {
 }
 
 .page-background-class {
-    background-image:url(../images/motion-background.jpg)
+    background-image: url(../images/motion-background.jpg)
+}
+
+hr {
+    margin: 2rem;
+}
+
+.loading-progress {
+    position: relative;
+    display: block;
+    width: 8rem;
+    height: 8rem;
+    margin: 20vh auto 1rem auto;
+}
+
+    .loading-progress circle {
+        fill: none;
+        stroke: #e0e0e0;
+        stroke-width: 0.6rem;
+        transform-origin: 50% 50%;
+        transform: rotate(-90deg);
+    }
+
+        .loading-progress circle:last-child {
+            stroke: #1b6ec2;
+            stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
+            transition: stroke-dasharray 0.05s ease-in-out;
+        }
+
+.loading-progress-text {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
+}
+
+    .loading-progress-text:after {
+        content: var(--blazor-load-percentage-text, "Loading");
+    }
+
+/*#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }*/
+
+h1 {
+    font-weight: 300;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 7rem;
+    margin: 0;
 }

@@ -13,5 +13,15 @@
     "name": "portfolio",
     "src": "images/design-desk.jpeg",
     "alt": "desktop with books and laptop"
+  },
+  {
+    "name": "contact",
+    "src": "images/contact-me.jpg",
+    "alt": "contact us image"
+  },
+  {
+    "name": "my-pic",
+    "src": "images/yovko-pic.jpg",
+    "alt": "photo of me"
   }
 ]
