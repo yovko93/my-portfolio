@@ -1,6 +1,7 @@
 ﻿@page "/"
 @inject HttpClient Http
 @inject ImageService ImageService
+@inject IJSRuntime JSRuntime
 
 <Header />
 <About Http=@Http />
@@ -8,3 +9,13 @@
 <Projects />
 <Contact Http=@Http />
 <Footer Http=@Http PrimaryColor="#4E567E" SecondaryColor="#D2F1E4" />
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("smoothScroll.initialize");
+        }
+    }
+}
