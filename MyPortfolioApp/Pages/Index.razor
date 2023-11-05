@@ -16,6 +16,7 @@
         if (firstRender)
         {
             await JSRuntime.InvokeVoidAsync("smoothScroll.initialize");
+            await JSRuntime.InvokeVoidAsync("initializeTyped", "typed-element");
         }
     }
 }
