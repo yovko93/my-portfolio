@@ -1,12 +1,13 @@
 ﻿@page "/"
 @inject HttpClient Http
 @inject ImageService ImageService
+@inject ProjectService ProjectService
 @inject IJSRuntime JSRuntime
 
 <Header />
 <About Http=@Http />
 <Skills />
-<Projects />
+<Projects ProjectService=@ProjectService/>
 <Contact Http=@Http />
 <Footer Http=@Http PrimaryColor="#4E567E" SecondaryColor="#D2F1E4" />
 

@@ -12,8 +12,9 @@
     <title>Yovko's Portfolio</title>
     <link rel="stylesheet" href="/css/app.css">
     <link rel="icon" type="image/x-icon" href="/favicon.png">
-    <script src="./js/smoothScroll.js"></script>
-    <script src="./js/typedInterop.js"></script>
+    <script src="./js/smoothScroll.js" defer></script>
+    <script src="./js/typedInterop.js" defer></script>
+    <script src="./js/owlCarouselInterop.js" defer></script>
 
     <base href="/" />
     <script>
@@ -34,21 +35,7 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
-    <script type="text/javascript" defer>
-        $(document).ready(function () {
-            $(".owl-carousel").owlCarousel({
-                items: 3,
-                autoplay: true,
-                margin: 30,
-                loop: true,
-                autoplayHoverPause: true,
-                dots: true
-            });
-        });
-    </script>
 
-    <!-- If you add any scoped CSS files, uncomment the following to load them
-    <link href="MyPortfolio.styles.css" rel="stylesheet" /> -->
 </head>
 
 <body>
