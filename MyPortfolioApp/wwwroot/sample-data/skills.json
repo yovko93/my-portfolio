@@ -1,0 +1,12 @@
+[
+  {
+    "name": "JavaScript",
+    "src": "images/skills/javascript_logo.svg",
+    "alt": "JS image"
+  },
+  {
+    "name": "React",
+    "src": "images/skills/react.svg",
+    "alt": "React image"
+  }
+]

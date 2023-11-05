@@ -1,3 +1,10 @@
 ﻿@page "/"
+@inject HttpClient Http
+@inject ImageService ImageService
 
-<h1>Hello, world!</h1>
+<Header />
+<About Http=@Http />
+<Skills />
+<Projects />
+<Contact Http=@Http />
+<Footer Http=@Http PrimaryColor="#4E567E" SecondaryColor="#D2F1E4" />

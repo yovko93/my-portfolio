@@ -1,0 +1,42 @@
+﻿<section class="contact" id="contact">
+    <div class="contact-container container">
+        <div class="contact-image">
+            <img src="./images/contact-me.jpg" alt="contact us image">
+        </div>
+        <div class="contact-form">
+            <form class="form">
+                <h2>Contact Me</h2>
+                @if (contactMe is null)
+                {
+                    <p><em>Loading...</em></p>
+                }
+                else
+                {
+                    <input type="text" placeholder="@contactMe.Name">
+                    <input type="text" placeholder="@contactMe.Subject">
+                    <input type="text" placeholder="@contactMe.Email">
+                    <textarea cols="30" rows="10" placeholder="@contactMe.Message"></textarea>
+                    <a href="#" class="btn btn-primary">Submit</a>
+                }
+            </form>
+        </div>
+    </div>
+</section>
+
+
+@code {
+    [Parameter, EditorRequired]
+    public required HttpClient Http { get; set; }
+
+    //[Parameter, EditorRequired]
+    //public required ImageService ImageService { get; set; }
+
+    private ContactMe? contactMe;
+    //private Image? image;
+
+    protected override async Task OnInitializedAsync()
+    {
+        contactMe = await Http.GetFromJsonAsync<ContactMe>("sample-data/contactme.json");
+        //image = await ImageService.GetHeroAsync(img => img.Name is "contact");
+    }
+}
