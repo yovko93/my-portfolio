@@ -10836,3 +10836,151 @@ h6,
         object-fit: cover;
         object-position: center;
     }
+
+
+/* ###################### Projects ######################### */
+#projects {
+    padding: 50px 0;
+}
+
+.section-heading h1 {
+    text-align: center;
+    padding: 0 0 5rem 0;
+    font-size: 3.2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #666;
+}
+
+.project-carousel .owl-dots button {
+    height: 5px;
+    background: #16a083 !important;
+    width: 20px;
+    display: inline-block;
+    margin: 5px;
+    transition: .3s;
+    border-radius: 2px;
+}
+
+.project-carousel button.owl-dot.active {
+    background: #000 !important;
+    width: 30px;
+}
+
+.project-carousel .owl-dots {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.single-project-item {
+    position: relative;
+    box-shadow: 0 0 2px #16a083;
+    margin: 2px;
+    padding: 10px;
+    font-style: italic;
+    width: 376px;
+    height: 356px;
+}
+
+    .single-project-item h3 {
+        font-size: 15px;
+        font-style: normal;
+        margin-bottom: 0;
+    }
+
+        .single-project-item h3 span {
+            display: block;
+            font-size: 14px;
+            font-weight: normal;
+            margin-top: 5px;
+        }
+
+.enq-btn {
+    position: fixed;
+    z-index: 999;
+    right: 0rem;
+    top: 11rem;
+    width: 2rem;
+}
+
+.tech-stack {
+    /* width: 50px; */
+    display: flex;
+    width: 130px;
+    padding: 10px 0;
+}
+
+    .tech-stack img {
+        width: 40px;
+        height: 40px;
+    }
+
+.projects-mobile {
+    display: none;
+    padding: 0 0 40px 0;
+}
+
+    .projects-mobile h1 {
+        text-align: center;
+        /* padding: 0 0 5rem 0; */
+        font-size: 2.5rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: #666;
+    }
+
+
+/* ################ Media Queries ################### */
+
+@media (max-width: 1258px) {
+    #projects {
+        display: none;
+    }
+
+    .projects-mobile {
+        display: block;
+    }
+}
+
+
+/* ############# Landscape mode ############## */
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .showcase {
+        height: 50vmax;
+    }
+}
+
+.loading-progress {
+    position: relative;
+    display: block;
+    width: 8rem;
+    height: 8rem;
+    margin: 20vh auto 1rem auto;
+}
+
+    .loading-progress circle {
+        fill: none;
+        stroke: #e0e0e0;
+        stroke-width: 0.6rem;
+        transform-origin: 50% 50%;
+        transform: rotate(-90deg);
+    }
+
+        .loading-progress circle:last-child {
+            stroke: #1b6ec2;
+            stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
+            transition: stroke-dasharray 0.35s ease-in-out;
+        }
+
+.loading-progress-text {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
+}
+
+    .loading-progress-text:after {
+        content: var(--blazor-load-percentage-text, "Loading");
+    }
+
