@@ -5,7 +5,9 @@
 @inject IJSRuntime JSRuntime
 
 <Header />
+<Home />
 <About Http=@Http />
+<Quality />
 <Skills />
 <Projects ProjectService=@ProjectService/>
 <Contact Http=@Http />
@@ -18,6 +20,7 @@
         {
             await JSRuntime.InvokeVoidAsync("smoothScroll.initialize");
             await JSRuntime.InvokeVoidAsync("initializeTyped", "typed-element");
+            //await JSRuntime.InvokeVoidAsync(".typed-text-output");
         }
     }
 }
