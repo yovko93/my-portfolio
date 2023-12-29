@@ -6,7 +6,10 @@
         </div>
         <div class="row align-items-center">
             <div class="col-lg-5 pb-4 pb-lg-0">
-                <img class="img-fluid rounded w-100" src="./images/yovko-pic.jpg" alt="">
+                @if (image is not null)
+                {
+                    <img class="img-fluid rounded w-100" src=@image.Src alt="">
+                }
             </div>
             <div class="col-lg-7">
                 @if (aboutMe is null)
@@ -36,15 +39,15 @@
     [Parameter, EditorRequired]
     public required HttpClient Http { get; set; }
 
-    //[Parameter, EditorRequired]
-    //public required ImageService ImageService { get; set; }
+    [Parameter, EditorRequired]
+    public required ImageService ImageService { get; set; }
 
     private AboutMe? aboutMe;
-    //private Image? image;
+    private Image? image;
 
     protected override async Task OnInitializedAsync()
     {
         aboutMe = await Http.GetFromJsonAsync<AboutMe>("sample-data/aboutme.json");
-        //image = await ImageService.GetHeroAsync(img => img.Name is "my-pic");
+        image = await ImageService.GetHeroAsync(img => img.Name is "my-pic-about-me");
     }
 }

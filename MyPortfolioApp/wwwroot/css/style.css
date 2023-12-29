@@ -10771,7 +10771,7 @@ h6,
     left: 30px;
 }
 
-.testimonial-carousel .owl-dots {
+/*.testimonial-carousel .owl-dots {
     margin-top: 25px;
     text-align: center;
 }
@@ -10787,7 +10787,7 @@ h6,
 
     .testimonial-carousel .owl-dot.active {
         background: #0BCEAF;
-    }
+    }*/
 
 .blog-date {
     position: absolute;

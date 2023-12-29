@@ -6,7 +6,7 @@
 
 <Header />
 <Home />
-<About Http=@Http />
+<About Http=@Http ImageService=@ImageService />
 <Quality />
 <Skills />
 <Projects ProjectService=@ProjectService/>
@@ -20,7 +20,9 @@
         {
             await JSRuntime.InvokeVoidAsync("smoothScroll.initialize");
             await JSRuntime.InvokeVoidAsync("initializeTyped", "typed-element");
-            //await JSRuntime.InvokeVoidAsync(".typed-text-output");
+            await JSRuntime.InvokeVoidAsync("navbarOnScrolling");
+            await JSRuntime.InvokeVoidAsync("scrollToBottom");
+            await JSRuntime.InvokeVoidAsync("backToTopBtn");
         }
     }
 }
