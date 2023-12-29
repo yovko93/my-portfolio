@@ -1,34 +1,4 @@
-﻿@*<section class="about" id="about">
-    <div class="page-background-class">
-        <div class="about-content container">
-            <div class="about-text">
-                <p class="small">About Myself</p>
-                <h2><span id="typed-element"></span></h2>
-                @if (aboutMe is null)
-                {
-                    <p><em>Loading...</em></p>
-                }
-                else
-                {
-                    <p>
-                        @aboutMe.Description
-                    </p>
-                }
-                <hr />
-                <a href="#projects" class="btn btn-primary" id="projects-btn">PROJECTS</a>
-                <a href="./files/Resume.pdf" target="_blank" class="btn btn-primary">RESUME</a>
-
-            </div>
-            <div class="about-img">
-                <img src="./images/yovko-pic.jpg" alt="Image of me">
-            </div>
-        </div>
-    </div>
-
-</section>
-*@
-
-<div class="container-fluid py-5" id="about">
+﻿<div class="container-fluid py-5" id="about">
     <div class="container">
         <div class="position-relative d-flex align-items-center justify-content-center">
             <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">About</h1>
