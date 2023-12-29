@@ -1,16 +1,13 @@
 [
   {
-    "title": "",
-    "description": "",
-    "websiteImage": "",
+    "title": "Portfolio",
+    "description": "PotrtFolio Website is a overall journey and a brief overview of my career.",
+    "websiteImage": "./images/projects/my-portfolio-web.png",
     "url": "",
-    "skillImages": ""
-  },
-  {
-    "title": "",
-    "description": "",
-    "websiteImage": "",
-    "url": "",
-    "skillImages": ""
+    "skillImages": [
+      "./images/skills/blazor.svg",
+      "./images/skills/html.png",
+      "./images/skills/css3.svg"
+    ]
   }
 ]
