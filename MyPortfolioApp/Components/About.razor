@@ -1,46 +1,53 @@
-﻿<section class="about" id="about">
-    <div class="page-background-class">
-        <div class="about-content container">
-            <div class="about-text">
-                <p class="small">About Myself</p>
-                <h2><span id="typed-element"></span></h2>
+﻿<div class="container-fluid py-5" id="about">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">About</h1>
+            <h1 class="position-absolute text-uppercase text-primary">About Me</h1>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-5 pb-4 pb-lg-0">
+                @if (image is not null)
+                {
+                    <img class="img-fluid rounded w-100" src=@image.Src alt="">
+                }
+            </div>
+            <div class="col-lg-7">
                 @if (aboutMe is null)
                 {
                     <p><em>Loading...</em></p>
                 }
                 else
                 {
-                    <p>
-                        @aboutMe.Description
-                    </p>
+                    <h3 class="mb-4">@aboutMe.Title</h3>
+                    <p>@aboutMe.Description</p>
+                    <div class="row mb-3">
+                        <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">@aboutMe.Name</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>Birthday: <span class="text-secondary">@aboutMe.Birthday</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>Degree: <span class="text-secondary">@aboutMe.Degree</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>Experience: <span class="text-secondary">@aboutMe.Experience</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>Phone: <span class="text-secondary">@aboutMe.Phone</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>Email: <span class="text-secondary">@aboutMe.Email</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>Address: <span class="text-secondary">@aboutMe.Address</span></h6></div>
+                    </div>
                 }
-                <hr />
-                <a href="#projects" class="btn btn-primary" id="projects-btn">PROJECTS</a>
-                <a href="./files/Resume.pdf" target="_blank" class="btn btn-primary">RESUME</a>
-
-            </div>
-            <div class="about-img">
-                <img src="./images/yovko-pic.jpg" alt="Image of me">
             </div>
         </div>
     </div>
-
-</section>
-
+</div>
 
 @code {
     [Parameter, EditorRequired]
     public required HttpClient Http { get; set; }
 
-    //[Parameter, EditorRequired]
-    //public required ImageService ImageService { get; set; }
+    [Parameter, EditorRequired]
+    public required ImageService ImageService { get; set; }
 
     private AboutMe? aboutMe;
-    //private Image? image;
+    private Image? image;
 
     protected override async Task OnInitializedAsync()
     {
         aboutMe = await Http.GetFromJsonAsync<AboutMe>("sample-data/aboutme.json");
-        //image = await ImageService.GetHeroAsync(img => img.Name is "my-pic");
+        image = await ImageService.GetHeroAsync(img => img.Name is "my-pic-about-me");
     }
 }

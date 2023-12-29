@@ -2,19 +2,18 @@
 <html lang="en">
 
 <head>
-    <!--<meta charset="utf-8" />
-    <title>MyPortfolio</title>
-    <link href="css/app.css" rel="stylesheet" />-->
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yovko's Portfolio</title>
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" type="image/x-icon" href="/favicon.png">
     <script src="./js/smoothScroll.js" defer></script>
     <script src="./js/typedInterop.js" defer></script>
     <script src="./js/owlCarouselInterop.js" defer></script>
+    <script src="./js/navbarOnScrolling.js" defer></script>
+    <script src="./js/scrollToBottom.js" defer></script>
+    <script src="./js/backToTopBtn.js" defer></script>
 
     <base href="/" />
     <script>
@@ -31,14 +30,15 @@
     </script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
-
 </head>
 
-<body>
+<body data-spy="scroll" data-target=".navbar" data-offset="51">
     <div id="app">
         <svg class="loading-progress">
             <circle r="40%" cx="50%" cy="50%" />
@@ -47,11 +47,11 @@
         <div class="loading-progress-text"></div>
     </div>
 
-    <!--<div id="blazor-error-ui">
-        An unhandled error has occurred.
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
-    </div>-->
+    <!-- Scroll to Bottom -->
+    <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-outline-dark px-0 back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="https://kit.fontawesome.com/5ade97e8eb.js" crossorigin="anonymous"></script>
@@ -60,6 +60,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
+    <script src="./lib/typed/typed.min.js"></script>
+    <script src="./lib/easing/easing.min.js"></script>
+    <script src="./lib/waypoints/waypoints.min.js"></script>
+    <script src="./lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="./lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="./lib/lightbox/js/lightbox.min.js"></script>
 </body>
 
 </html>

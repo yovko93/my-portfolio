@@ -5,11 +5,13 @@
 @inject IJSRuntime JSRuntime
 
 <Header />
-<About Http=@Http />
+<Home />
+<About Http=@Http ImageService=@ImageService />
+<Quality />
 <Skills />
 <Projects ProjectService=@ProjectService/>
-<Contact Http=@Http />
-<Footer Http=@Http PrimaryColor="#4E567E" SecondaryColor="#D2F1E4" />
+<Contact />
+<Footer Http=@Http />
 
 @code {
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -18,6 +20,9 @@
         {
             await JSRuntime.InvokeVoidAsync("smoothScroll.initialize");
             await JSRuntime.InvokeVoidAsync("initializeTyped", "typed-element");
+            await JSRuntime.InvokeVoidAsync("navbarOnScrolling");
+            await JSRuntime.InvokeVoidAsync("scrollToBottom");
+            await JSRuntime.InvokeVoidAsync("backToTopBtn");
         }
     }
 }
