@@ -24,7 +24,7 @@
                         <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">@aboutMe.Name</span></h6></div>
                         <div class="col-sm-6 py-2"><h6>Birthday: <span class="text-secondary">@aboutMe.Birthday</span></h6></div>
                         <div class="col-sm-6 py-2"><h6>Degree: <span class="text-secondary">@aboutMe.Degree</span></h6></div>
-                        <div class="col-sm-6 py-2"><h6>Experience: <span class="text-secondary">@aboutMe.Experience</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>Experience: <span class="text-secondary">@experienceYears Years</span></h6></div>
                         <div class="col-sm-6 py-2"><h6>Phone: <span class="text-secondary">@aboutMe.Phone</span></h6></div>
                         <div class="col-sm-6 py-2"><h6>Email: <span class="text-secondary">@aboutMe.Email</span></h6></div>
                         <div class="col-sm-6 py-2"><h6>Address: <span class="text-secondary">@aboutMe.Address</span></h6></div>
@@ -44,10 +44,12 @@
 
     private AboutMe? aboutMe;
     private Image? image;
+    private string experienceYears = "";
 
     protected override async Task OnInitializedAsync()
     {
         aboutMe = await Http.GetFromJsonAsync<AboutMe>("sample-data/aboutme.json");
         image = await ImageService.GetHeroAsync(img => img.Name is "my-pic-about-me");
+        experienceYears = (DateTime.Now.Year - 2020).ToString();
     }
 }
