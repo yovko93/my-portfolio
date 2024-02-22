@@ -1,0 +1,28 @@
+name: Docker Publish
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0.x'  # Replace with the desired .NET SDK version
+
+      - name: Build and publish Docker image
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker build -t yovko93/my-portfolio-app .
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          docker push yovko93/my-portfolio-app
