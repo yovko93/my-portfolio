@@ -23,6 +23,6 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
-          docker build -t hub.docker.com/repository/docker/yovko93/my-portfolio-app .
+          docker build -t yovko93/my-portfolio-app ./MyPortfolioApp
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-          docker push hub.docker.com/repository/docker/yovko93/my-portfolio-app
+          docker push yovko93/my-portfolio-app
