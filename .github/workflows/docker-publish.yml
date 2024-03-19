@@ -8,25 +8,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up .NET SDK
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '8.0.x'  # Replace with the desired .NET SDK version
-
-      - name: Login to Docker Hub
-        run: |
-          echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$(echo -n $DOCKER_HUB_USERNAME:$DOCKER_HUB_PASSWORD | base64)\"}}}" > $HOME/.docker/config.json
-
-      - name: Verify Docker configuration file
-        run: cat $HOME/.docker/config.json
-        
-      - name: Build Docker image
-        run: docker build -t yovko93/my-portfolio-app:latest ./MyPortfolioApp
-
-      - name: Push Docker image to Docker Hub
-        run: docker push yovko93/my-portfolio-app:latest
+    - uses: actions/checkout@v3
+      name: Check out code
+  
+    - uses: mr-smithers-excellent/docker-build-push@v6
+      name: Build & push Docker image
+      with:
+        image: yovko93/my-portfolio-app
+        registry: docker.io
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER__HUBPASSWORD }}
+      
