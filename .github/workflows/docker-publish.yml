@@ -19,5 +19,5 @@ jobs:
         image: yovko93/my-portfolio-app
         registry: docker.io
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
-        password: ${{ secrets.DOCKER__HUBPASSWORD }}
-      
+        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        dockerfile: ./MyPortfolioApp/Dockerfile
