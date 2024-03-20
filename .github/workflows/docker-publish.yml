@@ -37,7 +37,7 @@ jobs:
     needs: build
     
     steps:
-      - name: Deploy to production
       - uses: joelwmale/webhook-action@master
+        name: Deploy to production
         env:
           WEBHOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL}}
