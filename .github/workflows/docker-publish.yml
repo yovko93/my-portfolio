@@ -38,3 +38,4 @@ jobs:
         with:
           service-id: ${{ secrets.SERVICE_ID }}
           api-key: ${{ secrets.RENDER_API_KEY }}
+          deployHookURL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
