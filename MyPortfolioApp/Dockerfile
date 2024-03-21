@@ -19,7 +19,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 
 # Copy the published output from the build image
-COPY --from=build /src/MyPortfolioApp/publish ./
+COPY --from=build /app/publish ./
 
 # Expose the port that the application will listen on
 EXPOSE 80
