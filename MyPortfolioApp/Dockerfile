@@ -1,23 +1,25 @@
-# Use the official .NET SDK image as the base image
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+# Use the official .NET SDK image as the base image for building the application
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /src
 
-# Copy the project files into the container
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
+
+# Copy everything else and build the application
 COPY . ./
+RUN dotnet publish -c Release -o /app/publish
 
-# Build the application
-RUN dotnet publish -c Release -o out
-
-# Create a new image based on the runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
+# Use the official .NET runtime image as the base image for running the application
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 
 # Set the working directory inside the container
 WORKDIR /app
 
 # Copy the published output from the build image
-COPY --from=build /app/out ./
+COPY --from=build /app/publish ./
 
 # Expose the port that the application will listen on
 EXPOSE 80
