@@ -1,15 +1,15 @@
 # Use the official .NET SDK image as the base image for building the application
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
-# Set the working directory inside the container to the location of your .csproj file
-WORKDIR /src/MyPortfolioApp
+# Set the working directory inside the container
+WORKDIR /app
 
 # Copy csproj and restore as distinct layers
-COPY MyPortfolioApp/*.csproj ./
+COPY . ./
 RUN dotnet restore
 
 # Copy everything else and build the application
-COPY MyPortfolioApp/. ./
+COPY . ./
 RUN dotnet publish -c Release -o /app/publish
 
 # Use the official .NET runtime image as the base image for running the application
