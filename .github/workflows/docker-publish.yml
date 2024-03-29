@@ -29,11 +29,11 @@ jobs:
 
     - name: Push Docker image
       run: |
-        docker login -u "${DOCKER_USERNAME}" --password-stdin
+        docker login -u "${DOCKER_HUB_USERNAME}" --password-stdin
         docker push yovko93/my-portfolio-app:latest
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+        DOCKER_ACCESS_TOKEN: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
   deploy:
     runs-on: ubuntu-latest
