@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v2
-      name: Check out code
+    - name: Check out code
+      uses: actions/checkout@v2
 
     - name: Set up .NET SDK
       uses: actions/setup-dotnet@v1
@@ -22,8 +22,11 @@ jobs:
 
     - name: Build Docker image
       run: |
-        cp -r ./MyPortfolioApp/. ./MyPortfolioAppTemp
-        docker build -t yovko93/my-portfolio-app:latest --file MyPortfolioApp/Dockerfile .
+        cd MyPortfolioApp  # Move into the project directory
+        dotnet restore  # Restore dependencies
+        dotnet publish -c Release -o out  # Publish the application
+        cd ..  # Move back to the root directory
+        docker build -t yovko93/my-portfolio-app:latest ./MyPortfolioApp  # Build Docker image
 
     - name: Push Docker image
       run: |
