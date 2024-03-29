@@ -30,6 +30,7 @@ jobs:
 
     - name: Push Docker image
       run: |
+        echo "${DOCKER_HUB_PASSWORD}" | docker login -u "${DOCKER_HUB_USERNAME}" --password-stdin
         docker push yovko93/my-portfolio-app:latest
       env:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
