@@ -1,28 +1,26 @@
-# Use the official .NET SDK image as the base image for building the application
+# Use the .NET SDK 8.0 as a base image for building
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
-# Set the working directory inside the container
+# Set the working directory
 WORKDIR /app
 
-# Copy csproj and restore as distinct layers
-COPY . ./
+# Copy the project file(s) and restore dependencies
+COPY *.csproj ./
 RUN dotnet restore
 
-# Copy everything else and build the application
+# Copy the rest of the application code
 COPY . ./
-RUN dotnet publish -c Release -o /app/publish
 
-# Use the official .NET runtime image as the base image for running the application
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+# Build the application
+RUN dotnet publish -c Release -o out
 
-# Set the working directory inside the container
-WORKDIR /app
+# Use Nginx as the base image for hosting the Blazor WebAssembly app
+FROM nginx:alpine AS final
 
-# Copy the published output from the build image
-COPY --from=build /app/publish ./
+# Copy the published output from the build stage to the default Nginx public folder
+COPY --from=build /app/out/wwwroot /usr/share/nginx/html
 
-# Expose the port that the application will listen on
+# Expose port 80
 EXPOSE 80
 
-# Define the entry point for the container
-ENTRYPOINT ["dotnet", "MyPortfolioApp.dll"]
+# No need for an ENTRYPOINT as Nginx handles serving the static content
