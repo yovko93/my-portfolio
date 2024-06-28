@@ -20,18 +20,20 @@ jobs:
       with:
         dotnet-version: '8.0.x'  # Replace with the desired .NET SDK version
 
-    - name: Login to Docker Hub
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKER_HUB_USERNAME }}
-        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-    - name: Build and push
-      uses: docker/build-push-action@v5
-      with:
-        context: ./MyPortfolioApp
-        file: ./Dockerfile
-        push: true
-        tags: yovko93/my-portfolio-app:latest
+    - name: Build Docker image
+      run: |
+        cd MyPortfolioApp  # Move into the project directory
+        dotnet restore  # Restore dependencies
+        dotnet publish -c Release -o out  # Publish the application
+        cd ..  # Move back to the root directory
+        docker build -t yovko93/my-portfolio-app:latest ./MyPortfolioApp  # Build Docker image
+    - name: Push Docker image
+      run: |
+        echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+        docker push yovko93/my-portfolio-app:latest
+      env:
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        DOCKER_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -40,6 +42,8 @@ jobs:
     steps:
       - uses: joelwmale/webhook-action@master
         name: Deploy to production
+        env:
+          WEBHOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL}}
         env:
           WEBHOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL}}
           
