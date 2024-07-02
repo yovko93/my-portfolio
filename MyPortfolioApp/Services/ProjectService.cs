@@ -16,7 +16,7 @@ namespace MyPortfolioApp.Services
 
         internal async Task<List<Project>> GetProjectsAsync()
         {
-            var projects = await _getProjectsTask;
+            var projects = await _getProjectsTask ?? new List<Project>();
             return projects.ToList();
         }
 
