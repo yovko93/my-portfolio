@@ -6,7 +6,7 @@
   "phone": "+359 899 868 649",
   "address": "Plovdiv, Bulgaria",
   "birthday": "09 February 1993",
-  "experience": "3 Years",
+  "experience": "3+ Years",
   "email": "iovko1993@gmail.com",
   "skills": [
     "ASP.NET",
@@ -14,6 +14,8 @@
     "Postgre",
     "Redis",
     "Docker",
-    "Kubernetes"
+    "Kubernetes",
+    "Azure Service Bus",
+    "ReactJS"
   ]
 }
