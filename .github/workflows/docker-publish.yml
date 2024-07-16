@@ -18,7 +18,7 @@ jobs:
     - name: Set up .NET SDK
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0.x'  # Replace with the desired .NET SDK version
+        dotnet-version: '8.0.x'  # Use the desired .NET SDK version
 
     - name: Build Docker image
       run: |
@@ -26,10 +26,10 @@ jobs:
         dotnet restore  # Restore dependencies
         dotnet publish -c Release -o out  # Publish the application
         cd ..  # Move back to the root directory
-        docker build -t yovko93/my-portfolio-app:latest ./MyPortfolioApp  # Build Docker image
+        docker build -t yovko93/my-portfolio-app:latest .  # Build Docker image from the root directory
     - name: Push Docker image
       run: |
-        echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+        echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
         docker push yovko93/my-portfolio-app:latest
       env:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
@@ -43,5 +43,4 @@ jobs:
       - uses: joelwmale/webhook-action@master
         name: Deploy to production
         env:
-          WEBHOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL}}
-          
+          WEBHOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
