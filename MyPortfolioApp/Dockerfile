@@ -2,29 +2,23 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
 # Set the working directory
-WORKDIR /src
+WORKDIR /app
 
 # Copy the project file(s) and restore dependencies
-COPY *.csproj ./
+COPY MyPortfolioApp.csproj ./
 RUN dotnet restore
 
 # Copy the rest of the application code
 COPY . ./
 
 # Build the application
-RUN dotnet publish -c Release -o /app/publish
+RUN dotnet publish -c Release -o out
 
 # Use Nginx as the base image for hosting the Blazor WebAssembly app
 FROM nginx:alpine AS final
 
-# Remove default Nginx website
-RUN rm -rf /usr/share/nginx/html/*
-
 # Copy the published output from the build stage to the default Nginx public folder
-COPY --from=build /app/publish/wwwroot /usr/share/nginx/html
-
-# Copy custom Nginx configuration
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /app/out/wwwroot /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
