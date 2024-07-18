@@ -17,6 +17,15 @@ RUN dotnet publish -c Release -o out
 # Use Nginx as the base image for hosting the Blazor WebAssembly app
 FROM nginx:alpine AS final
 
+# Create non-root user
+RUN addgroup -S nginx && adduser -S nginx -G nginx \
+    && mkdir /home/nginx && chown -R nginx:nginx /var/run/nginx \
+    && chown -R nginx:nginx /usr/share/nginx/html \
+    && chmod -R 755 /usr/share/nginx/html
+
+# Switch to non-root user
+USER nginx
+
 # Remove default nginx static assets
 RUN rm -rf /usr/share/nginx/html/*
 
