@@ -20,14 +20,14 @@ FROM nginx:alpine AS final
 # Remove default nginx static assets
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copy the published output from the build stage to the default Nginx public folder
-COPY --from=build /app/out/wwwroot /usr/share/nginx/html
-
 # Copy NGINX configuration
 COPY default.conf /etc/nginx/conf.d/default.conf
 
+# Copy the published output from the build stage to the default Nginx public folder
+COPY --from=build /app/out/wwwroot /usr/share/nginx/html
+
 # Expose port 80
-EXPOSE 80
+EXPOSE 8080
 
 # Containers run nginx with global directives and daemon off
 #CMD ["nginx", "-g", "daemon off;"]
