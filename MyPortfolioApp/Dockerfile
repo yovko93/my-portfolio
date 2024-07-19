@@ -30,6 +30,6 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 
 # Containers run nginx with global directives and daemon off
-CMD ["nginx", "-g", "daemon off;"]
+#CMD ["nginx", "-g", "daemon off;"]
 
 # No need for an ENTRYPOINT as Nginx handles serving the static content
