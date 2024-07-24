@@ -26,6 +26,9 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 # Copy the published output from the build stage to the default Nginx public folder
 COPY --from=build /app/out/wwwroot /usr/share/nginx/html
 
+# Ensure the _redirects file is copied as well
+COPY _redirects /usr/share/nginx/html/_redirects
+
 # Expose port 80
 EXPOSE 8080
 
