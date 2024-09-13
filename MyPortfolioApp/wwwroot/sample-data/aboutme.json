@@ -1,5 +1,5 @@
 {
-  "title": "Web Developer & DevOps Software Engineer",
+  "title": ".NET Developer",
   "description": "My background includes developing responsive web applications, implementing CI/CD pipelines, and managing deployments on cloud platforms. I am skilled in automating processes to improve efficiency and ensuring the security and scalability of applications. Known for my problem-solving abilities and collaborative mindset, I consistently contribute to successful project outcomes and foster a culture of continuous enhancement and innovation.",
   "name": "Yovko Garkov",
   "degree": "Bachelor of Finance",
@@ -10,12 +10,16 @@
   "email": "iovko1993@gmail.com",
   "skills": [
     "ASP.NET",
-    "MS SQL",
-    "Postgre",
+    "MSSQL",
+    "PostgreSQL",
+    "Entity Framework Core",
     "Redis",
     "Docker",
     "Kubernetes",
     "Azure Service Bus",
-    "ReactJS"
+    "ReactJS",
+    "Blazor",
+    "Git",
+    "HTML&CSS"
   ]
 }
