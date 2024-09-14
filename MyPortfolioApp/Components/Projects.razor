@@ -10,24 +10,35 @@
             <br />
             <div>
                 <div>
-                    <div class="owl-carousel project-carousel">
+                    @if (projects.Any())
+                    {
+                        <div class="owl-carousel project-carousel">
 
-                        <div class="single-project-item">
-                            <img src="./images/projects/my-portfolio-web.png" />
-                            <br>
-                            <p>
-                                PotrtFolio Website is a overall journey and a brief overview of my career.
-                            </p>
-                            <br>
-                            <h3>Portfolio <span>Techonlogies used :</span></h3>
-                            <div class="tech-stack">
-                                <img src="./images/skills/blazor.svg" />
-                                <img src="./images/skills/html.png" />
-                                <img src="./images/skills/css3.svg" />
-                            </div>
+                            @foreach (var project in projects)
+                            {
+                                <div class="single-project-item">
+                                    <img src=@project.WebsiteImage alt="image loading..." />
+                                    <br>
+                                    <p>
+                                        @project.Description
+                                    </p>
+                                    <br>
+                                    <h3>@project.Title <span>Techonlogies used :</span></h3>
+                                    <div class="tech-stack">
+                                        @foreach (var skill in project.SkillImages)
+                                        {
+                                            <img src=@skill />
+                                        }
+                                    </div>
+                                </div>
+                            }
                         </div>
+                    }
+                    else
+                    {
+                        <h3> <span>There is no projects right now...</span></h3>
+                    }
 
-                    </div>
                 </div>
             </div>
         </div>
@@ -39,13 +50,14 @@
     [Parameter, EditorRequired]
     public required ProjectService ProjectService { get; set; }
 
-    private List<Project>? projects;
+    private List<Project> projects = new List<Project>();
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
             projects = await ProjectService.GetProjectsAsync();
+            StateHasChanged();
             int numberOfProjects = projects.Count;
             await JSRuntime.InvokeVoidAsync("initializeOwlCarousel", numberOfProjects);
         }

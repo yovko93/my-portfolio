@@ -2,15 +2,29 @@
   {
     "title": "My Portfolio",
     "description": "My Portfolio Website. The purpose is to show my personal information and skills.",
-    "websiteImage": "",
+    "websiteImage": "images/projects/my-portfolio-web.png",
     "url": "https://yovko-portfolio.onrender.com",
-    "skillImages": ""
+    "skillImages": [
+      "images/skills/blazor.svg",
+      "images/skills/html.png",
+      "images/skills/css3.svg",
+      "images/skills/docker.svg"
+    ]
   },
   {
     "title": "Self Service Portal",
-    "description": "",
-    "websiteImage": "",
-    "url": "",
-    "skillImages": ""
+    "description": "Euroins Self Service Portal offering a wide range of insurance products, including motor, traveler, property, and life insurance.",
+    "websiteImage": "images/projects/euroins-project.png",
+    "url": "https://my.euroins.bg/",
+    "skillImages": [
+      "images/skills/dotnet.svg",
+      "images/skills/docker.svg",
+      "images/skills/react.svg",
+      "images/skills/redis-original.svg",
+      "images/skills/kibana.jpg",
+      "images/skills/postgres-sql.png",
+      "images/skills/azure_logo.svg",
+      "images/skills/jira.png"
+    ]
   }
 ]

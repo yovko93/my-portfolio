@@ -248,7 +248,7 @@ hr {
 
 /* ###################### Projects ######################### */
 #projects {
-    padding: 50px 0;
+    padding: 0px 0;
 }
 
 .section-heading h1 {
@@ -287,7 +287,7 @@ hr {
     padding: 10px;
     font-style: italic;
     width: 376px;
-    height: 356px;
+    height: 456px;
 }
 
     .single-project-item h3 {
@@ -312,9 +312,9 @@ hr {
 }
 
 .tech-stack {
-    /* width: 50px; */
+    width: 50px; 
     display: flex;
-    width: 130px;
+    width: 140px;
     padding: 10px 0;
 }
 
