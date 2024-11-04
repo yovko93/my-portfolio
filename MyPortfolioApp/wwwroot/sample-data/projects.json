@@ -26,5 +26,20 @@
       "images/skills/azure_logo.svg",
       "images/skills/jira.png"
     ]
+  },
+  {
+    "title": "Upskill",
+    "description": "Upskill platform",
+    "websiteImage": "images/projects/upskill.png",
+    "url": "",
+    "skillImages": [
+      "images/skills/dotnet.svg",
+      "images/skills/react.svg",
+      "images/skills/postgres-sql.png",
+      "images/skills/azure_logo.svg",
+      "images/skills/csharp.svg",
+      "images/skills/css3.svg",
+      "images/skills/mssql.svg"
+    ]
   }
 ]
