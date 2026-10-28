@@ -1,12 +1,12 @@
 {
   "title": ".NET Developer",
-  "description": "My background includes developing responsive web applications, implementing CI/CD pipelines, and managing deployments on cloud platforms. I am skilled in automating processes to improve efficiency and ensuring the security and scalability of applications. Known for my problem-solving abilities and collaborative mindset, I consistently contribute to successful project outcomes and foster a culture of continuous enhancement and innovation.",
+  "description": "Hi, I'm Yovko. I'm a .NET developer with around four years of professional experience, mainly focused on backend development with C#, .NET, ASP.NET Core, REST APIs, and SQL.\nIn my current work, I maintain and improve existing production systems, work with APIs, databases, background services, messaging, and CI/CD pipelines. \nOutside my main work, I build my own .NET applications where I focus on clean architecture, automated testing, background processing, database design, and AI integrations.\nI'm particularly interested in backend engineering and building systems that are reliable, maintainable, and easy to extend. \nI've also worked on modernizing build and deployment processes, including migrating a large Jenkins pipeline to GitHub Actions.",
   "name": "Yovko Garkov",
   "degree": "Bachelor of Finance",
   "phone": "+359 899 868 649",
   "address": "Plovdiv, Bulgaria",
   "birthday": "09 February 1993",
-  "experience": "3+ Years",
+  "experience": "5+ Years",
   "email": "iovko1993@gmail.com",
   "skills": [
     "ASP.NET",
